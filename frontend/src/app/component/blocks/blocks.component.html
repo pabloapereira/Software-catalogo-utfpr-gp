@@ -1,0 +1,15 @@
+<app-banner
+  class="text-center flex justify-center"
+  [title]="'Selecione o Bloco'"
+></app-banner>
+
+<div
+  class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 place-items-center mx-10"
+>
+  <app-button
+    *ngFor="let block of blocks$ | async"
+    [buttonName]="block.name!"
+    (click)="navigateToLabs(block._id!)"
+  >
+  </app-button>
+</div>

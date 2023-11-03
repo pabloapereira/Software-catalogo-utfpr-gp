@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Island+Moments&family=Nothing+You+Could+Do&family=Noto+Sans:wght@400;700&family=Palanquin+Dark:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.icone {
+    background-image: url(./assets/imgs/accept.svg);
+}

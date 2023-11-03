@@ -1,0 +1,39 @@
+<div class="card w-96 bg-base-100 shadow-xl">
+  <div class="card-body">
+    <div class="card-actions justify-end">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>Solicitante</th>
+            <td>{{ requester }}</td>
+          </tr>
+
+          <tr>
+            <th>Sistema Operacional</th>
+            <td>{{ os }}</td>
+          </tr>
+
+          <tr>
+            <th>Versão</th>
+            <td>{{ version }}</td>
+          </tr>
+
+          <tr>
+            <th>Tipo de Licença</th>
+            <td>{{ license }}</td>
+          </tr>
+
+          <tr *ngIf="language !== undefined">
+            <th>Linguagem</th>
+            <td>{{ language }}</td>
+          </tr>
+
+          <tr>
+            <th>Data da Solicitação</th>
+            <td>{{ convertedDate | date : "d/M/y" }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

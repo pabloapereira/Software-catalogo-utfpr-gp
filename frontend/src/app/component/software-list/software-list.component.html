@@ -1,0 +1,27 @@
+<app-banner
+  class="text-center flex justify-center"
+  [title]="'Lab'"
+></app-banner>
+
+<div class="grid gap-4 grid-cols-1 place-items-center mb-5">
+  <app-accordion
+    *ngFor="let requisition of requisitions$ | async"
+    [softwareName]="requisition.software!"
+    class="mb-4"
+  >
+    <app-table
+      [requester]="requisition.requester!"
+      [os]="requisition.os!"
+      [version]="requisition.version!"
+      [license]="requisition.license!"
+      [language]="requisition.language"
+      [date]="requisition.date!"
+    ></app-table>
+  </app-accordion>
+
+  <button
+    class="mt-4 bg-cover h-10 w-10 icone mb-10"
+    type="submit"
+    (click)="navigateToForm()"
+  ></button>
+</div>

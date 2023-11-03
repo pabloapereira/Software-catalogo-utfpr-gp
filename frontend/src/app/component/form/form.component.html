@@ -1,0 +1,113 @@
+<!-- TODO: Make everything that is invalid red -->
+<form
+  class="bg-gradient-to-b from-marrom-form to-cinza-meia-noite text-center text-white rounded-md w-5/6 sm:w-11/12 md:w-2/3 lg:w-3/4 h-4/4 xl:h-3/5 grid grid-cols-1 p-3 gap-3 place-items-center mx-auto relative"
+  (ngSubmit)="onSubmit(form)"
+  #form="ngForm"
+>
+  <div class="grid w-full px-10 sm:px-24 lg:px-64">
+    <h1>Adicione um Software</h1>
+    <label for="requester">Solicitante*</label>
+    <input
+      type="text"
+      id="requester"
+      name="requester"
+      placeholder="Solicitante"
+      class="rounded-sm text-black"
+      [(ngModel)]="solicitanteInput"
+      #requester="ngModel"
+      pattern="^[A-Za-z\s]+$"
+      required
+    />
+
+    <div
+      *ngIf="requester.invalid && (requester.dirty || requester.touched)"
+      class="alert"
+    >
+      <div *ngIf="requester.errors?.['required']">
+        Necessário informar solicitante
+      </div>
+      <div *ngIf="requester.errors?.['pattern']">
+        Não é possível incluir números no nome.
+      </div>
+    </div>
+
+    <label for="software">Software*</label>
+    <input
+      type="text"
+      id="software"
+      name="software"
+      placeholder="Software"
+      class="rounded-sm text-black"
+      [(ngModel)]="softwareInput"
+      #softwareName="ngModel"
+      ngModel
+    />
+    <div
+      *ngIf="
+        softwareName.invalid && (softwareName.dirty || softwareName.touched)
+      "
+      class="alert"
+    >
+      <div *ngIf="softwareName.errors?.['required']">
+        Necessário informar o software.
+      </div>
+    </div>
+
+    <label for="version">Versão</label>
+    <input
+      type="text"
+      id="version"
+      name="version"
+      placeholder="Versão"
+      class="rounded-sm text-black"
+      ngModel
+    />
+
+    <label for="language">Idioma</label>
+    <input
+      type="text"
+      id="language"
+      name="language"
+      placeholder="Idioma"
+      class="rounded-sm text-black"
+      ngModel
+    />
+
+    <label for="size">Espaço em Disco</label>
+    <input
+      type="text"
+      id="size"
+      name="size"
+      placeholder="Espaço em Disco"
+      class="rounded-sm text-black"
+      ngModel
+    />
+
+    <label for="os">Sistema Operacional*</label>
+    <select name="os" id="os" class="rounded-sm text-black" ngModel required>
+      <option *ngFor="let os of systems">
+        {{ os }}
+      </option>
+    </select>
+
+    <label for="license">Tipo de Licença*</label>
+    <select
+      name="license"
+      id="license"
+      class="rounded-sm text-black"
+      ngModel
+      required
+    >
+      <option *ngFor="let license of licensesType">
+        {{ license }}
+      </option>
+    </select>
+
+    <!-- TODO: Make button semi-transparent if invalid -->
+    <button
+      class="justify-self-end mt-4 bg-cover h-10 w-10 icone"
+      type="submit"
+      [disabled]="!form.valid"
+    ></button>
+  </div>
+</form>
